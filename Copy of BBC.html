@@ -1,0 +1,92 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>BBC Live Streams</title>
+<link href="css/bbc/style.css" rel="stylesheet" type="text/css" media="all" />
+
+<script type="text/javascript" src="js/bbc/swfobject.js"></script>
+<script type="text/javascript" src="js/bbc/embed.js"></script>
+<script type="text/javascript" src="js/bbc/jst_core.v1.2.js"></script>
+<script type="text/javascript" src="js/bbc/prototype.js"></script>
+<script type="text/javascript" src="js/bbc/scriptaculous.js?load=effects"></script>
+
+</head>
+<body>
+<style>
+body {
+margin:10px 0px 0px 10px;
+}
+</style>
+<h1 id="title">BBC News</h1>
+<br clear="all"/> 
+<div id="emp1" class="player" style="float:left">
+	<embed type="application/x-shockwave-flash" 
+		src="http://www.bbc.co.uk/emp/10player.swf?revision=18269_21576" 
+		width="512" height="323" 
+		style="height: 323px; width: 512px;" 
+		id="bbc_emp_embed_emp1" 
+		name="bbc_emp_embed_emp1" 
+		bgcolor="#000000" 
+		quality="high" 
+		wmode="default" 
+		allowfullscreen="false" 
+		allowscriptaccess="always" 
+		flashvars="embedReferer=&;
+		embedPageUrl=http://www.bbc.co.uk/emp/simulcast/&;
+		domId=emp1&;
+		config_settings_autoPlay=true&;
+		playlist=http://www.bbc.co.uk/emp/simulcast/bbc_news24.xml&;
+		config=http://www.bbc.co.uk/emp/simulcast/config_bbc_news24.xml">		
+	</div>
+
+<script type="text/javascript">
+
+  //dp.SyntaxHighlighter.HighlightAll('onceCode'); 
+  var width= 512;
+  var height= 323;   
+  var playlist;
+  var config;   
+  var revision;  
+  
+function updateEmp(widthEmp, heightEmp) {
+  width=widthEmp;
+  height=heightEmp;
+  $('bbc_emp_embed_emp1').morph({width:widthEmp+'px',height:heightEmp+'px'});
+  $('standardSize').update(widthEmp+' x '+heightEmp);
+  updateEmbed();
+}  
+
+function reload(url, title) {
+  $('title').update(title);
+  var emp = new embeddedMedia.Player();
+  emp.setWidth(width);
+  emp.setHeight(height);
+  emp.setDomId("emp1"); 
+  emp.set("config_settings_autoPlay","true");
+  playlist = "http://www.bbc.co.uk/emp/simulcast/"+url+".xml";
+  emp.setPlaylist(playlist);
+  config = "http://www.bbc.co.uk/emp/simulcast/config_"+url+".xml";
+  emp.setConfig(config);
+  emp.write();  
+  updateEmbed();
+ }
+ 
+ function updateEmbed() {
+  $('codeWrap').update('<pre name="code" class="js:nogutter" id="embedCode"></pre>');
+  $('embedCode').update("var emp = new embeddedMedia.Player();"+"\n"+
+                        "emp.setWidth('"+width+"');"+"\n"+
+                        "emp.setHeight('"+height+"');"+"\n"+
+                        "emp.setPlaylist('"+playlist+"');"+"\n"+
+                        "emp.setConfig('"+config+"');"+"\n"+
+                        "emp.write();");			 
+ }
+
+ reload("bbc_news24","BBC News");
+</script> 
+</body>
+</html>
+
+

@@ -1,0 +1,65 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<title>BBC Video Player</title>
+	<style type="text/css" media="screen">
+		body { background-color: #000; border: 0; margin: 0; padding: 0; font-size: 62.5%; }
+		#horizon { left: 0; position: absolute; text-align: center; top: 50%; width: 100%; }
+		#content { height: 270px; left: 50%; margin-left: -256px; position: absolute; top: -135px; width: 512px; }
+	</style>
+	<script type="text/javascript" src="js/bbc/swfobject.js"></script>
+	<script type="text/javascript" src="js/bbc/embed.js"></script>
+	<script type="text/javascript" src="js/bbc/pop.js"></script>
+	<script type="text/javascript" src="js/bbc/pg.js"></script>
+
+	<style type="text/css">
+		@import 'css/bbc/guidance/style/pg_external.css';
+	</style>
+	<!--[if lte IE 7]>
+	<style type="text/css">
+		@import '/guidance/style/pg_external_ie.css';
+	</style>
+	<![endif]-->
+	<!--[if IE 6]>
+	<style type="text/css">
+		@import '/guidance/style/pg_external_ie6.css';
+	</style>
+	<![endif]-->
+</head>
+
+<body>
+
+	<div id="horizon">
+		<div id="content">
+
+			<div id="emp1">
+			<embed type="application/x-shockwave-flash" 
+			src="http://www.bbc.co.uk/emp/10player.swf?revision=18269_21576" 
+			width="512" height="509" 
+			style="" 
+			id="bbc_emp_embed_emp1" 
+			name="bbc_emp_embed_emp1" 
+			bgcolor="#000000" 
+			quality="high" 
+			wmode="default" 
+			allowfullscreen="true" 
+			allowscriptaccess="always" 
+			flashvars="embedReferer=&;
+			embedPageUrl=http://www.bbc.co.uk/emp/simulcast/&;
+			domId=emp1&;config_settings_showPopoutButton=false&;
+			config_settings_showPopoutCta=false&;
+			config_settings_showFooter=false&;
+			config_settings_autoPlay=true&;
+			playlist=http://www.bbc.co.uk/emp/simulcast/bbc_one_london.xml&;
+			config=http://www.bbc.co.uk/emp/simulcast/config_bbc_one_london.xml&;
+			language=en&;guuid=C615D31E-A290-0001-E292-10307C3F1490&;
+			revision=18269_21576&;
+			guidance=unknown">
+		</div>
+
+	</div>
+
+</body>
+</html>
