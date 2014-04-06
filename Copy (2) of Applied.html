@@ -16,73 +16,61 @@
 <script type="text/javascript" src="js/bbc/jst_core.v1.2.js"></script>
 <script type="text/javascript" src="js/bbc/prototype.js"></script>
 <script type="text/javascript" src="js/bbc/scriptaculous.js?load=effects"></script>
-<script type="text/javascript" src="js/clock.js"></script>
-<script type="text/javascript" src="js/setwidth.js"></script>
+<script type="text/javascript" src="js/raphael-min.js"></script> 
 </head>
 
-   <script>
-      function updateTime() { // Update the SVG clock
-        var now = new Date();
-        var sec = now.getSeconds();
-        var min = now.getMinutes();
-        var hour = (now.getHours() % 12) + min/60;
-        var secangle = sec*6;
-        var minangle = min*6;
-        var hourangle = hour*30;
- 
-        // Get SVG elements for the hands of the clock
-        var sechand = document.getElementById('secondhand');
-        var minhand = document.getElementById("minutehand");
-        var hourhand = document.getElementById("hourhand");
- 
-        // Set an SVG attribute on them to move them around the clock face
-        sechand.setAttribute("transform", "rotate(" + secangle + ",50,50)");
-        minhand.setAttribute("transform", "rotate(" + minangle + ",50,50)");
-        hourhand.setAttribute("transform", "rotate(" + hourangle + ",50,50)");
- 
-        setTimeout(updateTime, 1000);
-      }
- </script>
+<script type="text/javascript">
+     
+     	var now;
+			function update_clock(cwidth)
+				{
+					now = new Date();
+					var hours = now.getHours();
+					var minutes = now.getMinutes();
+					var seconds = now.getSeconds();
+					hour_hand.rotate(30*hours+(minutes/2.5), cwidth/2, cwidth/2);
+					minute_hand.rotate(6*minutes, cwidth/2, cwidth/2);
+					second_hand.rotate(6*seconds, cwidth/2, cwidth/2);
+				}
+
+			function draw_clock(cwidth, fillColor, strokeColor, pinColor, hourHandColor, minuteHandColor, secondHandColor)
+				{
+					canvas = Raphael("clock_id",cwidth, cwidth);
+					var clock = canvas.circle(cwidth*0.5,cwidth*0.5,cwidth*0.475);
+					clock.attr({"fill":fillColor,"stroke":strokeColor,"stroke-width":cwidth*0.01});
+					var hour_sign;
+					for(i=0;i<12;i++)
+						{
+							var start_x = cwidth*.5+Math.round((cwidth*.4)*Math.cos(30*i*Math.PI/180));
+							var start_y = cwidth*.5+Math.round((cwidth*.4)*Math.sin(30*i*Math.PI/180));
+							var end_x = cwidth*.5+Math.round((cwidth*.45)*Math.cos(30*i*Math.PI/180));
+							var end_y = cwidth*.5+Math.round((cwidth*.45)*Math.sin(30*i*Math.PI/180));
+							hour_sign = canvas.path("M"+start_x+" "+start_y+"L"+end_x+" "+end_y);
+						}
+					hour_hand = canvas.path("M" + cwidth*.5 + " " + cwidth*.5 + "L" + cwidth*.5 + " " + (cwidth*.25) + "");
+					hour_hand.attr({stroke: hourHandColor, "stroke-width": cwidth*.03});
+					minute_hand = canvas.path("M" + cwidth*.5 + " " + cwidth*.5 + "L" + cwidth*.5 + " " + (cwidth*.2) + "");
+					minute_hand.attr({stroke: minuteHandColor, "stroke-width": cwidth*.02});
+					second_hand = canvas.path("M" + cwidth*.5 + " " + (cwidth*.55) + "L" + cwidth*.5 + " " + (cwidth*.125) + "");
+					second_hand.attr({stroke: secondHandColor, "stroke-width": cwidth*.01});
+					var pin = canvas.circle(cwidth*.5, cwidth*.5, cwidth*.025);
+					pin.attr("fill", pinColor);
+					update_clock(cwidth);
+					setInterval("update_clock("+cwidth+")",1000);
+				}
+				
+		
+</script>
 
 		
 	<header id="aiheader">
 		<img id="logo" border="0" src="img/logo.png" width="230" height="50"/>
 	</header>
-		<body id="body" onload="updateTime('secondhand', 'minutehand', 'hourhand')">
+	<!--<body id="body" onload=" date_time('dt_date', 'dt_time');">-->
+		<body id="body">
 			<div id="CLOCK">
 				<div id="clock_id">
-					    <!-- viewBox is coordinate system, width and height are on-screen size -->
-    				<svg id="clock" viewBox="0 0 100 100" width="200" height="200">
-      					<circle id="face" cx="50" cy="50" r="45"/> <!-- the clock face -->
-      						<g id="ticks">
-        						<!-- 12 hour tick marks -->
-        						<line x1='50' y1='5.000' x2='50.00' y2='10.00'/>
-        						<line x1='72.50' y1='11.03' x2='70.00' y2='15.36'/>
-        						<line x1='88.97' y1='27.50' x2='84.64' y2='30.00'/>
-        						<line x1='95.00' y1='50.00' x2='90.00' y2='50.00'/>
-        						<line x1='88.97' y1='72.50' x2='84.64' y2='70.00'/>
-        						<line x1='72.50' y1='88.97' x2='70.00' y2='84.64'/>
-        						<line x1='50.00' y1='95.00' x2='50.00' y2='90.00'/>
-        						<line x1='27.50' y1='88.97' x2='30.00' y2='84.64'/>
-        						<line x1='11.03' y1='72.50' x2='15.36' y2='70.00'/>
-        						<line x1='5.000' y1='50.00' x2='10.00' y2='50.00'/>
-        						<line x1='11.03' y1='27.50' x2='15.36' y2='30.00'/>
-        						<line x1='27.50' y1='11.03' x2='30.00' y2='15.36'/>
-      						</g>
-      						<g id="numbers">
-        						<!-- Number the cardinal directions-->
-        						<text x="50" y="18">12</text>
-								<text x="85" y="53">3</text>
-        						<text x="50" y="88">6</text>
-								<text x="15" y="53">9</text>
-      						</g>
-      						<!-- Draw hands pointing straight up. We rotate them in the code. -->
-      						<g id="hands"> <!-- Add shadows to the hands -->
-        						<line id="hourhand" x1="50" y1="50" x2="50" y2="26"/>
-        						<line id="minutehand" x1="50" y1="50" x2="50" y2="20"/>
-        						<line id="secondhand" x1="50" y1="50" x2="50" y2="14"/>
-      						</g>
-    				</svg>
+					<script>draw_clock(300, "#777777", "#cc6600", "#cc6600", "#000000", "#000000", "#cc6600");</script>
 				</div>
 				<div id="date_id">
 					<p id="dt_date"></p>
@@ -187,7 +175,6 @@ function reload(url) {
 				x.innerHTML=d.toLocaleDateString();
 			}			
 </script>
-
 
 
 </body>
