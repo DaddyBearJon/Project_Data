@@ -19,40 +19,15 @@
 <script type="text/javascript" src="js/clock.js"></script>
 <script type="text/javascript" src="js/setwidth.js"></script>
 </head>
-
-   <script>
-      function updateTime() { // Update the SVG clock
-        var now = new Date();
-        var sec = now.getSeconds();
-        var min = now.getMinutes();
-        var hour = (now.getHours() % 12) + min/60;
-        var secangle = sec*6;
-        var minangle = min*6;
-        var hourangle = hour*30;
- 
-        // Get SVG elements for the hands of the clock
-        var sechand = document.getElementById('secondhand');
-        var minhand = document.getElementById("minutehand");
-        var hourhand = document.getElementById("hourhand");
- 
-        // Set an SVG attribute on them to move them around the clock face
-        sechand.setAttribute("transform", "rotate(" + secangle + ",50,50)");
-        minhand.setAttribute("transform", "rotate(" + minangle + ",50,50)");
-        hourhand.setAttribute("transform", "rotate(" + hourangle + ",50,50)");
- 
-        setTimeout(updateTime, 1000);
-      }
- </script>
-
 		
 	<header id="aiheader">
-		<img id="logo" border="0" src="img/logo.png" width="230" height="50"/>
+		<img id="logo" src="img/logo.png" alt="Applied Integration Logo" width="230" height="50"/>
 	</header>
 		<body id="body" onload="updateTime('secondhand', 'minutehand', 'hourhand')">
 			<div id="CLOCK">
 				<div id="clock_id">
 					    <!-- viewBox is coordinate system, width and height are on-screen size -->
-    				<svg id="clock" viewBox="0 0 100 100" width="200" height="200">
+    				<svg id="clock" viewBox="0 0 100 100" width="300" height="300">
       					<circle id="face" cx="50" cy="50" r="45"/> <!-- the clock face -->
       						<g id="ticks">
         						<!-- 12 hour tick marks -->
@@ -79,9 +54,14 @@
       						<!-- Draw hands pointing straight up. We rotate them in the code. -->
       						<g id="hands"> <!-- Add shadows to the hands -->
         						<line id="hourhand" x1="50" y1="50" x2="50" y2="26"/>
+                                <line id="hourhandtail" x1="50" y1="50" x2="50" y2="46"/>
         						<line id="minutehand" x1="50" y1="50" x2="50" y2="20"/>
+                                <line id="minutehandtail" x1="50" y1="50" x2="50" y2="46"/>
         						<line id="secondhand" x1="50" y1="50" x2="50" y2="14"/>
+                                <line id="secondhandtail" x1="50" y1="50" x2="50" y2="46"/>
       						</g>
+
+                            <circle id="pin" cx ="50" cy="50" r="2"/>
     				</svg>
 				</div>
 				<div id="date_id">
@@ -188,7 +168,35 @@ function reload(url) {
 			}			
 </script>
 
+   <script type="text/javascript">
+       function updateTime() { // Update the SVG clock
+           var now = new Date();
+           var sec = now.getSeconds();
+           var min = now.getMinutes();
+           var hour = (now.getHours() % 12) + min / 60;
+           var secangle = sec * 6;
+           var minangle = min * 6;
+           var hourangle = hour * 30;
 
+           // Get SVG elements for the hands of the clock
+           var sechand = document.getElementById('secondhand');         
+           var minhand = document.getElementById("minutehand");           
+           var hourhand = document.getElementById("hourhand");
+           var sechandtail = document.getElementById('secondhandtail');
+           var minhandtail = document.getElementById("minutehandtail");
+           var hourhandtail = document.getElementById("hourhandtail");
+
+           // Set an SVG attribute on them to move them around the clock face
+           sechand.setAttribute("transform", "rotate(" + secangle + ",50,50)");          
+           minhand.setAttribute("transform", "rotate(" + minangle + ",50,50)");
+           hourhand.setAttribute("transform", "rotate(" + hourangle + ",50,50)");
+           sechandtail.setAttribute("transform", "rotate(" + (secangle + 180) + ",50,50)");
+           minhandtail.setAttribute("transform", "rotate(" + (minangle + 180) + ",50,50)");
+           hourhandtail.setAttribute("transform", "rotate(" + (hourangle + 180) + ",50,50)");
+
+           setTimeout(updateTime, 1000);
+       }
+ </script>
 
 </body>
 

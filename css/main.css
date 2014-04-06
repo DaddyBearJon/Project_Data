@@ -49,8 +49,8 @@ html {
     border: 0;
     border-top: 1px solid #ccc;
     margin: 1em 0;
-    padding: 0; */
-}
+    padding: 0; 
+} */
 
 /*
  * Remove the gap between images, videos, audio and canvas and the bottom of
@@ -242,28 +242,52 @@ textarea {
 	}
       /* clock face outline */
 #ticks { 
-	stroke-width: 1; 
+	stroke-width: 1px; 
 	stroke: #cc6600;
 	}
       /* lines that mark each hour */
 #hourhand {
 	stroke-width: 2px;
-	stroke: black;
+	stroke: #000000;
 	}
       /* wide hour hand */
 #minutehand {
 	stroke-width: 2px;
-	stroke: black;
+	stroke: #000000;
 	} /* narrow minute hand */
 #secondhand {
 	stroke-width: 1px;
 	stroke: #cc6600;
 	}
+
+#hourhandtail {
+	stroke-width: 2px;
+	stroke: #000000;
+	}
+      /* wide hour hand */
+#minutehandtail {
+	stroke-width: 2px;
+	stroke: #000000;
+	} /* narrow minute hand */
+#secondhandtail {
+	stroke-width: 1px;
+	stroke: #cc6600;
+	}
 #numbers {
         /* how to draw the numbers */
-        font-family: sans-serif; font-size: 7pt; font-weight: bold;
-        text-anchor: middle; stroke: none; fill: #cc6600;
+        font-family: sans-serif;
+        font-size: 7pt; 
+        font-weight: bold;
+        fill: #cc6600;
+        text-anchor: middle; 
+        stroke: none;
       }
+
+#pin {
+    stroke-width: 0.5px;
+    stroke: #000000;
+    fill: #cc6600;
+}
 
 
 
