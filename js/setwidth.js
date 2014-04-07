@@ -1,4 +1,4 @@
-function setSize(element) {
+function getVidWidth(element) {
 	var eWidth;
 	var rWidth;
 	var eHeight;
@@ -16,7 +16,7 @@ function setSize(element) {
 	return rWidth;
 }
 
-function setSizeClock(element) {
+function getClockWidth(element) {
 			var eWidth;
 			var halfWidth;
 			var rWidth;
