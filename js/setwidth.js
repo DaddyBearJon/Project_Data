@@ -15,22 +15,3 @@ function getVidWidth(element) {
 	
 	return rWidth;
 }
-
-function getClockWidth(element) {
-			var eWidth;
-			var halfWidth;
-			var rWidth;
-			var eHeight;
-			eWidth = jQuery(element).width();
-			halfWidth = eWidth / 2;
-			eHeight = jQuery(element).height();
-		
-			if (eHeight < halfWidth) {
-				rWidth = eHeight;
-			} 
-			else{
-				rWidth = halfWidth;
-			};
-	
-			return rWidth;
-		}
