@@ -3,8 +3,8 @@ function getVidWidth(element) {
 	var rWidth;
 	var eHeight;
 	var nHeight;
-	eWidth = $(element).width();
-	eHeight = $(element).height();
+	eWidth = jQuery(element).width();
+	eHeight = jQuery(element).height();
 	nHeight = eWidth / 1.77;
 
 	if (nHeight > eHeight) {
@@ -21,9 +21,9 @@ function getClockWidth(element) {
 			var halfWidth;
 			var rWidth;
 			var eHeight;
-			eWidth = $(element).width();
+			eWidth = jQuery(element).width();
 			halfWidth = eWidth / 2;
-			eHeight = $(element).height();
+			eHeight = jQuery(element).height();
 		
 			if (eHeight < halfWidth) {
 				rWidth = eHeight;

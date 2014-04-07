@@ -100,12 +100,6 @@ textarea {
 
 #body {
 	background-color: #000000;
-	border: 1px solid;
-	border-color: #cc6600;
-}
-
-#AI_Vid {
-	margin:0px 0px 0px 0px;
 }
 
 #Page_title {
@@ -114,6 +108,8 @@ textarea {
 }
 
 #aiheader {
+        border: 1px solid;
+	border-color: #cc6600;
 	width: auto;
 	height:auto;
 	background-color: #282828;
@@ -122,12 +118,12 @@ textarea {
 #aifooter {
 	text-align: center;
 	background-color: #282828;
-	width: 99.1%;
+	width: 98.9%;
 	color: #cc6600;
 	font-family:"Comic Sans MS";
 	position: absolute;
 	bottom:0;
-	left: 0.4%;
+	left: 0.5%;
 	border: 1px solid;
 	border-color: #cc6600;
 	font-size: 0.5em;
@@ -140,7 +136,7 @@ textarea {
  	position:absolute;
 	top: 7%;
 	right: 0.5%;
- 	background: #000000;
+ 	background-color:#282828;
  	border-color: #cc6600;
 }
  
@@ -152,7 +148,7 @@ textarea {
 	position:absolute;
 	top: 41%;
 	right: 0.5%;
-    background: #000000;
+    background-color:#282828;
     border-color: #cc6600;
   }
 
@@ -163,7 +159,7 @@ textarea {
     position:absolute;
 	top: 7%;
 	left: 0.5%;
-    background: #000000;
+    background-color: #282828;
     border-color: #cc6600;
   }
   
@@ -172,42 +168,39 @@ textarea {
   	height: auto;
   }
 
-
-
  #clock_id{
- 	width:300px;
- 	height: 300px;
+ 	width:50%;
+ 	height: 100%;
  	position: absolute;
- 	top:7%;
- 	left:1%;
+ 	top:0.5%;
+ 	left:0.5%;
  }
  
  #date_id{
  	/*border: 1px solid;*/
- 	width:300px;
- 	height: 200px;
+ 	width:50%;
+ 	height: 100%;
  	position: absolute;
- 	top:28%;
- 	right:1%;
+ 	top:35%;
+ 	right:5%;
  }
  
   #dt_date{
-  	font-size: 3em;
- 	text-align: center;
+  	font-size: 200%;
+ 	text-align: right;
  	color: #cc6600;
 	font-family:"Comic Sans MS";
  	
  }
 
- 
   #RSS {
     border: 1px solid;
-    width:99.1%;
+    width:98.9%;
     height: 23%;
     position:absolute;
 	top: 75%;
-	left: 0.4%;
-    background: #000000;
+	left: 0.5%;
+    background-color: #282828;
     border-color: #cc6600;
   }
   
@@ -228,8 +221,9 @@ textarea {
 #emp1 {
 	padding-left: 0.5%;
 	padding-top: 0.5%;
-	width: 100%;
+	width: 99%;
 	height: auto;
+        text-align: center;
 }
 
 #clock {
@@ -294,10 +288,10 @@ textarea {
     fill: #cc6600;
 }
 
-#poo {
-    width: 100%;
-}
-
+  #testicle {
+    width: 50%;
+    border: 1px black solid;
+  }
 
 
 /* ==========================================================================
